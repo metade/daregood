@@ -1,4 +1,4 @@
-<h1>Listing attempts <%= "for #{enclosing_resource_name}" + content_tag(:em, " #{enclosing_resource.name}") if enclosing_resource %></h1>
+<h1>Listing attempts <%= "for #{enclosing_resource_name} " + content_tag(:em, link_to(enclosing_resource.name, enclosing_resource_path)) if enclosing_resource %></h1>
 
 <table>
   <tr>

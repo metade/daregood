@@ -34,8 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :home
   
   
-  map.short_user ':id', :controller => :public_users, :resource_path => '/public_users', :action => 'show'
-  map.resources :public_users do |users|
+  map.resources :public_users  do |users|
     users.resources :challenges do |challenges|
       challenges.resource :attempts do |attempts|
         attempts.resources :pledges
@@ -47,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :pledges
   end
 
+  map.short_user ':id', :controller => :public_users, :resource_path => '/public_users', :action => 'show'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -5,4 +5,6 @@ class PublicUsersController < ApplicationController
     @public_user = find_resource
     @user = @public_user
   end
+
+
 end
