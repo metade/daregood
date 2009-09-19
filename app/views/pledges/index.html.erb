@@ -14,13 +14,17 @@
     <td><%=h pledge.status %></td>
     <td><%=h pledge.attempt_id %></td>
     <td><%=h pledge.charity_id %></td>
-    <td><%= link_to 'Show', pledge %></td>
-    <td><%= link_to 'Edit', edit_pledge_path(pledge) %></td>
-    <td><%= link_to 'Destroy', pledge, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', resource_path(pledge) %></td>
+    <% if @account %>
+    <td><%= link_to 'Edit', edit_resource_path(pledge) %></td>
+    <td><%= link_to 'Destroy', resource_path(pledge), :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New pledge', new_pledge_path %>
+<% if @account %>
+<%= link_to 'New pledge', new_resource_path %>
+<% end %>

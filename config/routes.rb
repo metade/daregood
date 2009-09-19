@@ -1,15 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :charities do |charities|
+  map.resources :charities, :only => [:index, :show] do |charities|
     charities.resources :pledges
   end
 
-  map.resources :pledges
+  map.resources :pledges, :only => [:index, :show]
+  map.resources :attempts, :only => [:index, :show]
 
-  map.resources :attempts
-
-  map.resources :challenges do |challenges|
-    challenges.resource :attempts do |attempts|
-      attempts.resources :pledges
+  map.resources :challenges, :only => [:index, :show] do |challenges|
+    challenges.resources :attempts, :only => [:index, :show] do |attempts|
+      attempts.resources :pledges, :only => [:index, :show]
     end
   end
 
@@ -17,7 +16,26 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users do |users|
+  map.resources :users
+  
+  map.resource :account do |account|
+    account.resources :challenges do |challenges|
+      challenges.resource :attempts do |attempts|
+        attempts.resources :pledges
+      end
+    end
+    account.resources :attempts do |attempts|
+      attempts.resources :pledges
+    end
+    account.resources :pledges
+  end
+  
+  map.resource :session
+  map.root :controller => :home
+  
+  
+  map.short_user ':id', :controller => :public_users, :resource_path => '/public_users', :action => 'show'
+  map.resources :public_users do |users|
     users.resources :challenges do |challenges|
       challenges.resource :attempts do |attempts|
         attempts.resources :pledges
@@ -28,19 +46,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     users.resources :pledges
   end
-  
-  map.resource :account do |account|
-    account.resources :challenges do |challenges|
-      challenges.resource :attempts do |attempts|
-        attempts.resources :pledges
-      end
-    end
-    account.resources :attempts
-    account.resources :pledges
-  end
 
-  map.resource :session
-  map.root :controller => :home
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -77,10 +83,12 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
 
   # See how all your routes lay out with "rake routes"
-
+  
+  
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  
 end

@@ -50,7 +50,15 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-
+  
+  def name
+    login
+  end
+  
+  def to_param
+    "#{id}-#{login}"
+  end
+  
   protected
     
 

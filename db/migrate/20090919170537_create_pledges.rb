@@ -3,6 +3,7 @@ class CreatePledges < ActiveRecord::Migration
     create_table :pledges do |t|
       t.integer :value
       t.string :status
+      t.integer :user_id
       t.integer :attempt_id
       t.integer :charity_id
 

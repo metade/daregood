@@ -1,0 +1,17 @@
+<h1><%= @user.name%><h1>
+
+<p>This user has proposed the following challenges</p>
+<ul>
+  <% for challenge in @user.challenges %>
+    <li><%= link_to(challenge.name, challenge_path(challenge) )%></li>
+  <% end %>
+</ul>
+
+<p>This user has attempting the following challenges</p>
+<ul>
+  <% for attempt in @user.attempts %>
+    <li><%= link_to(attempt.id, attempt_path(attempt) )%></li>
+  <% end %>
+</ul>
+
+<%= link_to('Attempts by this user', resource_attempts_path) %>

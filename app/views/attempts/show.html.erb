@@ -13,6 +13,9 @@
   <%=h @attempt.user_id %>
 </p>
 
+<% if @account %>
+<%= link_to 'Make a pledge', new_resource_pledge_path %>
 
-<%= link_to 'Edit', edit_attempt_path(@attempt) %> |
-<%= link_to 'Back', attempts_path %>
+<%= link_to 'Edit', edit_resource_path %> |
+<% end %>
+<%= link_to 'Back', resources_path %>

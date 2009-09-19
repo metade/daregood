@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20090919170649) do
   create_table "pledges", :force => true do |t|
     t.integer  "value"
     t.string   "status"
+    t.integer  "user_id"
     t.integer  "attempt_id"
     t.integer  "charity_id"
     t.datetime "created_at"

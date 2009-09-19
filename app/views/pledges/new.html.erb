@@ -1,19 +1,12 @@
 <h1>New pledge</h1>
 
-<% form_for(@pledge) do |f| %>
+<% form_for(@pledge, :url => account_pledges_path) do |f| %>
   <%= f.error_messages %>
-
+  <%= f.hidden_field :attempt_id %>
+  
   <p>
     <%= f.label :value %><br />
     <%= f.text_field :value %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.label :attempt_id %><br />
-    <%= f.text_field :attempt_id %>
   </p>
   <p>
     <%= f.label :charity_id %><br />

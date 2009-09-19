@@ -15,9 +15,19 @@
 
 <p>
   <b>User:</b>
-  <%=h @challenge.user_id %>
+  <%= link_to(@challenge.user.login, public_user_path(@challenge.user)) %>
 </p>
 
+<p>
+  <b>Challenge accepted by <%= link_to("#{@challenge.attempts.count} users", resource_attempts_path) %></b>
+</p>
 
+<% form_for @challenge.attempts.new, :url => account_attempts_path   do |f| %> 
+<%= f.hidden_field :challenge_id %>
+<%= f.submit('Attempt this challenge') %>
+<%end %>
+
+<% if @account %>
 <%= link_to 'Edit', edit_resource_path %> |
 <%= link_to 'Back', resources_path %>
+<% end %>
