@@ -1,0 +1,27 @@
+<h1>New pledge</h1>
+
+<% form_for(@pledge) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :attempt_id %><br />
+    <%= f.text_field :attempt_id %>
+  </p>
+  <p>
+    <%= f.label :charity_id %><br />
+    <%= f.text_field :charity_id %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', pledges_path %>

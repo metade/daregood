@@ -1,0 +1,26 @@
+<h1>Listing pledges</h1>
+
+<table>
+  <tr>
+    <th>Value</th>
+    <th>Status</th>
+    <th>Attempt</th>
+    <th>Charity</th>
+  </tr>
+
+<% @pledges.each do |pledge| %>
+  <tr>
+    <td><%=h pledge.value %></td>
+    <td><%=h pledge.status %></td>
+    <td><%=h pledge.attempt_id %></td>
+    <td><%=h pledge.charity_id %></td>
+    <td><%= link_to 'Show', pledge %></td>
+    <td><%= link_to 'Edit', edit_pledge_path(pledge) %></td>
+    <td><%= link_to 'Destroy', pledge, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pledge', new_pledge_path %>

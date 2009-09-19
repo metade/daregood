@@ -1,0 +1,18 @@
+<p>
+  <b>Challenge:</b>
+  <%=h @attempt.challenge_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @attempt.status %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @attempt.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_attempt_path(@attempt) %> |
+<%= link_to 'Back', attempts_path %>

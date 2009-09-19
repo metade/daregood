@@ -1,0 +1,23 @@
+<p>
+  <b>Value:</b>
+  <%=h @pledge.value %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @pledge.status %>
+</p>
+
+<p>
+  <b>Attempt:</b>
+  <%=h @pledge.attempt_id %>
+</p>
+
+<p>
+  <b>Charity:</b>
+  <%=h @pledge.charity_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_pledge_path(@pledge) %> |
+<%= link_to 'Back', pledges_path %>

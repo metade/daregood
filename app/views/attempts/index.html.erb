@@ -1,0 +1,24 @@
+<h1>Listing attempts</h1>
+
+<table>
+  <tr>
+    <th>Challenge</th>
+    <th>Status</th>
+    <th>User</th>
+  </tr>
+
+<% @attempts.each do |attempt| %>
+  <tr>
+    <td><%=h attempt.challenge_id %></td>
+    <td><%=h attempt.status %></td>
+    <td><%=h attempt.user_id %></td>
+    <td><%= link_to 'Show', attempt %></td>
+    <td><%= link_to 'Edit', edit_attempt_path(attempt) %></td>
+    <td><%= link_to 'Destroy', attempt, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New attempt', new_attempt_path %>

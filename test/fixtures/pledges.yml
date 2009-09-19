@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  value: 1
+  status: MyString
+  attempt_id: 1
+  charity_id: 1
+
+two:
+  value: 1
+  status: MyString
+  attempt_id: 1
+  charity_id: 1

@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @charity.name %>
+</p>
+
+<p>
+  <b>Mission:</b>
+  <%=h @charity.mission %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @charity.url %>
+</p>
+
+<p>
+  <b>Logo url:</b>
+  <%=h @charity.logo_url %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @charity.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_charity_path(@charity) %> |
+<%= link_to 'Back', charities_path %>
