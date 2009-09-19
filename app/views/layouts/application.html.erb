@@ -9,6 +9,25 @@
 </head>
 <body>
 
+  <div id="nav_bar">
+    <% unless current_page?(challenges_path) %>
+    <%= link_to "All Dares!", challenges_path %>
+    or
+    <%end%>
+  <% if logged_in? %>
+    
+    <% unless current_page?(account_path) %>
+    <%= link_to "Your Account Home", account_path %>
+    or
+    <%end%>
+    <%= link_to "Logout", logout_path %>
+
+    <% else %>
+    <%= link_to "Login", login_path %>
+    or
+    <%= link_to "Signup", signup_path %>
+  <% end %>
+</div>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
