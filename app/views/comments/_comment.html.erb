@@ -1,0 +1,3 @@
+<% div_for(comment) do %>
+  <%= link_to(comment.user.login, public_user_path(comment.user)) %> <%=h comment.title %> <%=h comment.text %>
+<% end %>

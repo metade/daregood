@@ -1,0 +1,26 @@
+<p>
+  <b>Title:</b>
+  <%=h @comment.title %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%=h @comment.text %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @comment.user_id %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%=h @comment.owner_id %>
+</p>
+
+<p>
+  <b>Owner type:</b>
+  <%=h @comment.owner_type %>
+</p>
+
+<%= link_to 'Back', resources_path %>

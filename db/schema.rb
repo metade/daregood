@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090919170649) do
+ActiveRecord::Schema.define(:version => 20090919204237) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "challenge_id"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20090919170649) do
     t.string   "url"
     t.string   "logo_url"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "title"
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

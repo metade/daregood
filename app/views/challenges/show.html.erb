@@ -1,12 +1,6 @@
-<p>
-  <b>Name:</b>
-  <%=h @challenge.name %>
-</p>
+<h1><%=h @challenge.name %></h1>
 
-<p>
-  <b>Description:</b>
-  <%=h @challenge.description %>
-</p>
+<p><%=h @challenge.description %></p>
 
 <p>
   <b>Status:</b>
@@ -26,6 +20,8 @@
 <%= f.hidden_field :challenge_id %>
 <%= f.submit('Attempt this challenge') %>
 <%end %>
+
+<%= render(:partial => 'comments/comments', :locals => { :comments => @challenge.comments}) %>
 
 <% if @account %>
 <%= link_to 'Edit', edit_resource_path %> |

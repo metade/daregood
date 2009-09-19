@@ -4,11 +4,15 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :pledges, :only => [:index, :show]
-  map.resources :attempts, :only => [:index, :show]
+  map.resources :attempts, :only => [:index, :show] 
 
   map.resources :challenges, :only => [:index, :show] do |challenges|
+    challenges.resources :comments
     challenges.resources :attempts, :only => [:index, :show] do |attempts|
-      attempts.resources :pledges, :only => [:index, :show]
+      attempts.resources :comments
+      attempts.resources :pledges, :only => [:index, :show] do |pledges|
+        pledges.resources :comments
+      end
     end
   end
 
