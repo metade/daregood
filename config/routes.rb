@@ -1,17 +1,43 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :charities
+  map.resources :charities do |charities|
+    charities.resources :pledges
+  end
 
   map.resources :pledges
 
   map.resources :attempts
 
-  map.resources :challenges
+  map.resources :challenges do |challenges|
+    challenges.resource :attempts do |attempts|
+      attempts.resources :pledges
+    end
+  end
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users
+  map.resources :users do |users|
+    users.resources :challenges do |challenges|
+      challenges.resource :attempts do |attempts|
+        attempts.resources :pledges
+      end
+    end
+    users.resources :attempts do |attempts|
+      attempts.resources :pledges
+    end
+    users.resources :pledges
+  end
+  
+  map.resource :account do |account|
+    account.resources :challenges do |challenges|
+      challenges.resource :attempts do |attempts|
+        attempts.resources :pledges
+      end
+    end
+    account.resources :attempts
+    account.resources :pledges
+  end
 
   map.resource :session
   map.root :controller => :home
