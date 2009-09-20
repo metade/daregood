@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
       end
     end
     account.resources :attempts do |attempts|
+      attempts.resources :comments
       attempts.resources :pledges
     end
     account.resources :pledges

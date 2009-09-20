@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
+  is_gravtastic!
+  
   has_many :challenges
   has_many :attempts
   has_many :pledges
