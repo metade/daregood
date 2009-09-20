@@ -15,7 +15,9 @@
 <table class="dares">
 
 	<colgroup>
-    	<col class="gravatars" />
+    	<col class="gravatar" />
+    	<col class="dares" />
+    	<col class="gravatar" />
     	<col class="title" />
     	<col class="media" />
     	<col class="prog" />
@@ -23,18 +25,13 @@
     
     <% @attempts.each do |attempt| %>
     <tr>
-	<td class="gravatars">
-		<table class="adareb">
-			<tr>
-				<td>
-					<%= image_tag(attempt.darer.gravatar_url, :height => 80, :width => 80) unless attempt.darer.nil? %>
-				</td>
-				<td>dared</td>
-				<td>
-					<%= image_tag(attempt.daree.gravatar_url, :height => 80, :width => 80) %>
-				</td>
-			</tr>
-		</table>
+	
+	<td class="gravatar">
+		<%= image_tag(attempt.darer.gravatar_url, :height => 80, :width => 80) unless attempt.darer.nil? %>
+	</td>
+	<td class="dares">dared</td>
+	<td class="gravatar">
+		<%= image_tag(attempt.daree.gravatar_url, :height => 80, :width => 80) %>
 	</td>
 	
 	<td class="title"><%= link_to(attempt.daree.name, public_user_path(attempt.daree)) %> will <%= link_to(attempt.challenge.name, challenge_attempt_path(attempt.challenge, attempt)) %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</td>
