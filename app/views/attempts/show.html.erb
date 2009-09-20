@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+<script type="text/javascript" src="http://v6.flickrshow.com/scripts/"></script>
+<% end %>
+
 <h1><%=h @attempt.challenge.name %></h1>
 <p><%=h @attempt.challenge.description %></p>
 
@@ -7,6 +11,13 @@
 <p>Dared by: <% if @attempt.darer %><%= image_tag @attempt.darer.gravatar_url %><%= @attempt.darer.name %><% end %></p>
 
 <p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
+
+<div id="fsDemo" style="height:400px;width:600px;">
+<p>Photos of this attempt.</p>
+</div>
+<script type="text/javascript">
+var cesc = new flickrshow("fsDemo", {flickr_tags: "daregood:attempt=<%= @attempt.id %>"});
+</script>
 
 <p><%= number_to_currency(@attempt.value_pledged, :unit => '£') %> pledged<% " out of #{number_to_currency(@attempt.target_value, :unit => '£')}" if @attempt.target_value %>.</p>
 <h2>Pledges</h2>
