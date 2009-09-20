@@ -10,4 +10,8 @@ class Attempt < ActiveRecord::Base
   def value_pledged
     pledges.sum :value # { |sum, p| sum + p.value }
   end
+  
+  def progress
+    target_value ? (value_pledged / target_value) * 100 : 0
+  end
 end

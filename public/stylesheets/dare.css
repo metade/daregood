@@ -175,7 +175,7 @@ padding:0;
 	background: #ff0000;
 }
 
-#donations {
+#donations, #comments {
 	margin: 1em;
 	padding: 0;
 	min-height: 10em;
@@ -191,7 +191,7 @@ padding:0;
 	border-radius: 10px;
 }
 
-#donations .comment {
+#donations .comment, #donations .comment {
 	min-height: 100px; /* based on the height of the avatar image. */
 	margin: 1em;
 	background: #cccccc;

@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.resource :account do |account|
+    account.resources :comments
     account.resources :challenges do |challenges|
       challenges.resources :comments
       challenges.resource :attempts do |attempts|
