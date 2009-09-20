@@ -15,28 +15,23 @@
 <table class="dares">
 
 	<colgroup>
-	<col class="gravatars" />
+	<col/>
+	<col class="gravatar" />
 	<col class="title" />
-	<col class="attempts" />
 	<col class="dare" />
+	<col class="attempts" />
 	</colgroup>
 
 	<% @challenges.each do |challenge| %>
 	<tr>
-		<td class="gravatars">
-			<table class="adareb">
-				<tr>
-					<td>
-						<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) unless challenge.user.nil? %>
-					</td>
-          <td>
-			      <%= challenge.user.name %> dares:
-          </td>
-				</tr>
-			</table>
-		</td>
-
+    <td class="gravatar">
+      <%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) unless challenge.user.nil? %>
+    </td>
 		<td class="title">
+      <%= challenge.user.name %> created:
+    </td>
+
+		<td class="dare">
 			<%= link_to(challenge.name, challenge_path(challenge)) %>.
 		</td>
 
