@@ -1,35 +1,120 @@
 <% content_for :javascripts do %>
-<script type="text/javascript" src="http://v6.flickrshow.com/scripts/"></script>
+  <script type="text/javascript" src="http://v6.flickrshow.com/scripts/"></script>
+<% end %>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'dare' %>
 <% end %>
 
-<h1><%=h @attempt.challenge.name %></h1>
-<p><%=h @attempt.challenge.description %></p>
-
-<p><%= link_to 'Make a pledge', new_resource_pledge_path %></p>
-
-<% if @attempt.darer %>
-<p><%= image_tag @attempt.darer.gravatar_url %><%= @attempt.darer.name %> dared <%= image_tag @attempt.daree.gravatar_url %> <%= @attempt.daree.name %>.</p>
-<% else %>
-<p><%= image_tag @attempt.daree.gravatar_url %> <%= @attempt.daree.name %> dared themselves!</p>
-<% end %>
-<p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
-
-<div id="fsDemo" style="height:400px;width:600px;">
-<p>Photos of this attempt.</p>
+<div id="dare">
+  <span class="title"><h1><%=h @attempt.challenge.name %></h1></span>
+  <span class="action"><a href="">Dare a friend to do this</a></span>
 </div>
-<script type="text/javascript">
-var cesc = new flickrshow("fsDemo", {flickr_tags: "daregood:attempt=<%= @attempt.id %>"});
-</script>
 
-<p><%= number_to_currency(@attempt.value_pledged, :unit => '£') %> pledged<% " out of #{number_to_currency(@attempt.target_value, :unit => '£')}" if @attempt.target_value %>.</p>
-<h2>Pledges</h2>
-<ul>
-<% @attempt.pledges.each do |pledge| %>
-  <li><%= number_to_currency(pledge.value, :unit => '£') %> by <%= link_to(pledge.user.name, public_user_path(pledge.user))%>
-<% end %>
-</ul>
+<div id="right-bar">
 
-<%= render(:partial => 'comments/comments', :locals => { :comments => @attempt.comments}) %>
+  <div id="pledge">
+    <h3>Support this</h3>
+    <p><%= link_to 'Make a pledge', new_resource_pledge_path %></p>
+    <p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
+    
+    <p>Clicking "Pledge" will take you to PayPal to pre-authorise the payment.  You will only be charged if the dare is completed.</p>
+    <form action="" method="POST">
+    <table>
+    <tr><td><input type="text" name="amount" maxlength="6" value="10.00" /></td><td>GBP</td></tr>
+    <tr><td><input type="submit" name="pledge" value="Pledge" /></td></tr>
+    </table>
+    </form>
+  </div>
+  
+  <div id="prog">
+    <h3>Progress</h3>
+    <p>x of y</p>
+    <div class="bar-outer"><div class="bar-inner" style="height: <%= @attempt.progress %>"</div></div>
+  </div>
+  
+</div>
+
+<div id="left-bar">
+
+  <div id="summary">
+
+    <div class="pics">
+      <div class="pic">
+        <%= image_tag(@attempt.darer.gravatar_url, :height => 100, :width => 100) %>
+        <p><%= link_to(@attempt.darer.name, public_user_path(@attempt.darer)) %> <%= @attempt.darer ? 'was dared by' : 'dared themselves!' %></p>
+      </div>
+      
+      <% if @attempt.darer %>
+      <div class="pic">
+        <%= image_tag(@attempt.daree.gravatar_url, :height => 100, :width => 100) %>
+        <p><%= link_to(@attempt.daree.name, public_user_path(@attempt.daree)) %></p>
+      </div>
+      <% end %>
+    </div>
+    
+    <div class="desc">
+      <p><%= @attempt.challenge.description %></p>
+    </div>
+  
+  </div>
+  
+  <div id="media">
+    <h3>Media</h3>
+    <div id="fsDemo" style="height:400px;width:600px;">
+    <p>Photos of this attempt.</p>
+    </div>
+    <script type="text/javascript">
+    var cesc = new flickrshow("fsDemo", {flickr_tags: "daregood:attempt=<%= @attempt.id %>"});
+    </script>
+  </div>
+  
+  <div id="donations">
+    <h3>Donations</h3>
+    
+    <div class="comments">
+      <% @attempt.pledges.each do |pledge| %>
+      <div class="comment">
+        <%= image_tag(@pledge.user.gravatar_url, :height => 100, :width => 100) %>
+        <span class="name"><%= pledge.user.name %></span>
+        <span class="money"><%= number_to_currency(pledge.value, :unit => '£') %></span>
+        <span class="comment"><%= pledge.comment %></span>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div id="comments">
+    <h3>Comments</h3>
+    
+    <div class="comments">
+      <% @attempt.comments.each do |comments| %>
+      <div class="comment">
+        <%= image_tag(@comment.user.gravatar_url, :height => 100, :width => 100) %>
+        <span class="name"><%= comment.user.name %></span>
+        <span class="comment"><%= comment.text %></span>
+      </div>
+      <% end %>
+      
+      <h4>New comment</h4>
+      <% form_for @attempt.comments.new, :url => account_comments_path do |f| %>
+        <%= f.error_messages %>
+        <%= f.hidden_field :owner_id %>
+        <%= f.hidden_field :owner_type %>
+        <p>
+          <%= f.label :title %><br />
+          <%= f.text_field :title %>
+        </p>
+        <p>
+          <%= f.label :text %><br />
+          <%= f.text_field :text %>
+        </p>
+        <p>
+          <%= f.submit 'Create' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <% if @account %>
 <%= link_to 'Edit', edit_resource_path %> |
