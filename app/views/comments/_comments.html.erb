@@ -1,3 +1,5 @@
 <h2>Comments</h2>
+<div id="comments">
 <%= render(comments) %>
+</div>
 <%= link_to('New comment', resources_name == "comments" ? new_resource_path : new_resource_comment_path) %>

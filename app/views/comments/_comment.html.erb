@@ -1,3 +1,5 @@
 <% div_for(comment) do %>
-  <%= link_to(comment.user.login, public_user_path(comment.user)) %> <%=h comment.title %> <%=h comment.text %>
+  <%= image_tag(comment.user.gravatar_url, :height => 100, :width => 100) %>
+  <span class="name"><%= comment.user.name %></span>
+  <span class="comment"><%= comment.text %></span>
 <% end %>

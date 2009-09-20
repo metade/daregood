@@ -1,0 +1,2 @@
+page.insert_html :bottom, 'comments_container', :partial => @comment
+page[ dom_id(@comment)].visual_effect :highlight
