@@ -79,10 +79,9 @@
     <div class="comments">
       <% @attempt.pledges.each do |pledge| %>
       <div class="comment">
-        <%= image_tag(@pledge.user.gravatar_url, :height => 100, :width => 100) %>
+        <%= image_tag(pledge.user.gravatar_url, :height => 100, :width => 100) %>
         <span class="name"><%= pledge.user.name %></span>
         <span class="money"><%= number_to_currency(pledge.value, :unit => '£') %></span>
-        <span class="comment"><%= pledge.comment %></span>
       </div>
       <% end %>
     </div>

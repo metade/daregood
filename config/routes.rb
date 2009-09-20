@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :challenges, :only => [:index, :show, :new, :edit] do |challenges|
     challenges.resources :comments
-    challenges.resources :attempts, :only => [:index, :show, :new, :edit] do |attempts|
+    challenges.resources :attempts, :only => [:index, :show, :new, :edit], :member => { :paypal => :get } do |attempts|
       attempts.resources :comments
       attempts.resources :pledges, :only => [:index, :show, :new] do |pledges|
         pledges.resources :comments

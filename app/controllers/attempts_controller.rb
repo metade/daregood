@@ -1,6 +1,10 @@
 class AttemptsController < ApplicationController
   resources_controller_for :attempts
   
+  def paypal
+    @attempt = find_resource
+  end
+  
   # POST /events
   # POST /events.xml
   def create
