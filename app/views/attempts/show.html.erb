@@ -87,9 +87,9 @@
     <h3>Comments</h3>
     
     <div class="comments">
-      <% @attempt.comments.each do |comments| %>
+      <% @attempt.comments.each do |comment| %>
       <div class="comment">
-        <%= image_tag(@comment.user.gravatar_url, :height => 100, :width => 100) %>
+        <%= image_tag(comment.user.gravatar_url, :height => 100, :width => 100) %>
         <span class="name"><%= comment.user.name %></span>
         <span class="comment"><%= comment.text %></span>
       </div>
@@ -100,10 +100,6 @@
         <%= f.error_messages %>
         <%= f.hidden_field :owner_id %>
         <%= f.hidden_field :owner_type %>
-        <p>
-          <%= f.label :title %><br />
-          <%= f.text_field :title %>
-        </p>
         <p>
           <%= f.label :text %><br />
           <%= f.text_field :text %>

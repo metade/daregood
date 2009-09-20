@@ -22,7 +22,7 @@
     
     <% @attempts.each do |attempt| %>
     <tr>
-  		<td class="title"><%= attempt.daree.name %> will <%= attempt.challenge.name %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</td>
+  		<td class="title"><%= link_to(attempt.daree.name, public_user_path(attempt.daree.name)) %> will <%= link_to(attempt.challenge.name, challenge_attempt_path(attempt.challenge, attempt)) %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</td>
   		<td class="media">[media]</td>
   		<td class="prog"><%= number_to_currency(attempt.value_pledged, :unit => '£') %> / <%= number_to_currency(attempt.target_value, :unit => '£') %></td>
   	</tr>
