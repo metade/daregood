@@ -1,8 +1,13 @@
-<h1>Editing attempt</h1>
+<h1>Editing attempt for <% @attempt.challenge.name %></h1>
 
-<% form_for(@attempt) do |f| %>
+<% form_for_resource do |f| %>
   <%= f.error_messages %>
-
+  
+  <p>
+    <%= f.label :target_value, 'This attempt will raise' %> £<%= f.text_field :target_value %>
+    towards the <%= f.label :chartity_id, 'charity' %><%= collection_select(:attempt, :charity_id, Charity.all, :id, :name, {:prompt => true}) %>.
+  </p>
+  
   <p>
     <%= f.label :challenge_id %><br />
     <%= f.text_field :challenge_id %>
