@@ -1,21 +1,24 @@
-<p>
-  <b>Challenge:</b>
-  <%=h @attempt.challenge_id %>
-</p>
+<h1><%=h @attempt.challenge.name %></h1>
+<p><%=h @attempt.challenge.description %></p>
 
-<p>
-  <b>Status:</b>
-  <%=h @attempt.status %>
-</p>
+<p><%= link_to 'Make a pledge', new_resource_pledge_path %></p>
 
-<p>
-  <b>User:</b>
-  <%=h @attempt.user_id %>
-</p>
+<p>Attemptee: <%= @attempt.user.name %></p>
+<p>Dared by: <%= @attempt.darer.name if @attempt.darer %></p>
+
+<p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
+
+<p><%= number_to_currency(@attempt.value_pledged, :unit => '£') %> pledged<% " out of #{number_to_currency(@attempt.target_value, :unit => '£')}" if @attempt.target_value %>.</p>
+<h2>Pledges</h2>
+<ul>
+<% @attempt.pledges.each do |pledge| %>
+  <li><%= number_to_currency(pledge.value, :unit => '£') %> by <%= link_to(pledge.user.name, public_user_path(pledge.user))%>
+<% end %>
+</ul>
+
+<%= render(:partial => 'comments/comments', :locals => { :comments => @challenge.comments}) %>
 
 <% if @account %>
-<%= link_to 'Make a pledge', new_resource_pledge_path %>
-
 <%= link_to 'Edit', edit_resource_path %> |
 <% end %>
-<%= link_to 'Back', resources_path %>
+<%= link_to "See more attempts at this challenge", resources_path %>

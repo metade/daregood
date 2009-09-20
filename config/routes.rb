@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     challenges.resources :comments
     challenges.resources :attempts, :only => [:index, :show] do |attempts|
       attempts.resources :comments
-      attempts.resources :pledges, :only => [:index, :show] do |pledges|
+      attempts.resources :pledges, :only => [:index, :show, :new] do |pledges|
         pledges.resources :comments
       end
     end
@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :account do |account|
     account.resources :challenges do |challenges|
+      challenges.resources :comments
       challenges.resource :attempts do |attempts|
         attempts.resources :pledges
       end
