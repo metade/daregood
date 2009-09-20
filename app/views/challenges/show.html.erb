@@ -1,27 +1,39 @@
-<h1><%=h @challenge.name %></h1>
-
-<p><%=h @challenge.description %></p>
-
-<p>
-  <b>Status:</b>
-  <%=h @challenge.status %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= link_to(@challenge.user.login, public_user_path(@challenge.user)) %>
-</p>
-
-<p>
-  <b>Challenge accepted by <%= link_to("#{@challenge.attempts.count} users", resource_attempts_path) %></b>
-</p>
-
-<p>
-<%= render(:partial => 'dare', :locals => { :challenge => @challenge } )%>
-
-<%= render(:partial => 'comments/comments', :locals => { :comments => @challenge.comments}) %>
-
-<% if @account %>
-<%= link_to 'Edit', edit_resource_path %> |
-<%= link_to 'Back', resources_path %>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'dare' %>
 <% end %>
+
+<div id="dare">
+  <span class="title"><h1><%=h @challenge.name %></h1></span>
+  <span class="action"><%= render(:partial => 'dare', :locals => { :challenge => @challenge } )%></span>
+</div>
+
+<div id="left-bar">
+
+  <div id="summary">
+
+    <div class="pics">
+      <div class="pic">
+        <%= image_tag(@challenge.user.gravatar_url, :height => 100, :width => 100) %>
+        <p><%= link_to(@challenge.user.name, public_user_path(@challenge.user)) %> created this dare.</p>
+      </div>
+    </div>
+    
+    <div class="desc">
+      <p><%= @challenge.description %></p>
+    </div>
+    
+    <div id="attempts">
+      <h3>Attempts</h3>
+      
+      <div class="attempts">
+        <% @challenge.attempts.each do |attempt| %>
+        <div class="comment">
+          <span class="name"><%= link_to(attempt.darer.name, public_user_path(attempt.darer.name)) %> dared <%= link_to(attempt.daree.name, public_user_path(attempt.daree.name)) %> to <%= link_to(attempt.challenge.name, challenge_attempt_path(attempt.challenge, attempt)) %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</span>
+          <span class="money"><%= number_to_currency(attempt.value_pledged, :unit => '£') %> / <%= number_to_currency(attempt.target_value, :unit => '£') %></span>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>
