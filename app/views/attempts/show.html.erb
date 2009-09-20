@@ -4,7 +4,6 @@
 
 <div id="dare">
   <span class="title"><h1><%=h @attempt.challenge.name %></h1></span>
-  <span class="action"><%= render(:partial => 'challenges/dare', :locals => { :challenge => @challenge } )%></span>
 </div>
 
 <div id="right-bar">
@@ -33,20 +32,24 @@
 
 <div id="left-bar">
 
+  <div id="action"><div class="center"><%= render(:partial => 'challenges/dare', :locals => { :challenge => @challenge } )%></div></div>
+
   <div id="summary">
 
     <div class="pics">
-      <div class="pic">
-        <%= image_tag(@attempt.darer.gravatar_url, :height => 100, :width => 100) unless @attempt.darer.nil? %>
-        <p><%= link_to(@attempt.darer.name, public_user_path(@attempt.darer)) unless @attempt.darer.nil?  %> <%= @attempt.darer ? 'was dared by' : 'dared themselves!' %></p>
-      </div>
-      
-      <% if @attempt.darer %>
-      <div class="pic">
-        <%= image_tag(@attempt.daree.gravatar_url, :height => 100, :width => 100) %>
-        <p><%= link_to(@attempt.daree.name, public_user_path(@attempt.daree)) %></p>
-      </div>
-      <% end %>
+	<table class="adareb">
+		<tr>
+			<td>
+				<%= image_tag(@attempt.darer.gravatar_url, :height => 100, :width => 100) unless @attempt.darer.nil? %>
+				<p><%= link_to(@attempt.darer.name, public_user_path(@attempt.darer)) unless @attempt.darer.nil?  %></p>
+			</td>
+			<td>dared</td>
+			<td>
+				<%= image_tag(@attempt.daree.gravatar_url, :height => 100, :width => 100) %>
+				<p><%= link_to(@attempt.daree.name, public_user_path(@attempt.daree)) %></p>
+			</td>
+		</tr>
+	</table>
     </div>
     
     <div class="desc">
