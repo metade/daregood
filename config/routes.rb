@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pledges, :only => [:index, :show]
   map.resources :attempts, :only => [:index, :show] 
 
-  map.resources :challenges, :only => [:index, :show] do |challenges|
+  map.resources :challenges, :only => [:index, :show, :new] do |challenges|
     challenges.resources :comments
     challenges.resources :attempts, :only => [:index, :show] do |attempts|
       attempts.resources :comments

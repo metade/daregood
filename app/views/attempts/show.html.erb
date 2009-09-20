@@ -40,8 +40,8 @@
 
     <div class="pics">
       <div class="pic">
-        <%= image_tag(@attempt.darer.gravatar_url, :height => 100, :width => 100) %>
-        <p><%= link_to(@attempt.darer.name, public_user_path(@attempt.darer)) %> <%= @attempt.darer ? 'was dared by' : 'dared themselves!' %></p>
+        <%= image_tag(@attempt.darer.gravatar_url, :height => 100, :width => 100) unless @attempt.darer.nil? %>
+        <p><%= link_to(@attempt.darer.name, public_user_path(@attempt.darer)) unless @attempt.darer.nil?  %> <%= @attempt.darer ? 'was dared by' : 'dared themselves!' %></p>
       </div>
       
       <% if @attempt.darer %>

@@ -1,23 +1,32 @@
-<h1>New challenge</h1>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'dare' %>
+<% end %>
 
-<% form_for_resource do |f| %>
+
+<div id="dare">
+  <span class="title"><h1>Create a new dare</h1></span>
+</div>
+
+<div id="left-bar">
+  <% form_for(@challenge, :url => account_challenges_path) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+  <div id="summary">
+      <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :description %><br />
+        <%= f.text_field :description %>
+      </p>
+      <p>
+        <%= f.submit 'Create' %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+
 
 <%= link_to 'Back', resources_path %>
