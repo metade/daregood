@@ -4,10 +4,11 @@
 
 <div id="dare">
   <span class="title"><h1><%=h @challenge.name %></h1></span>
-  <span class="action"><%= render(:partial => 'dare', :locals => { :challenge => @challenge } )%></span>
 </div>
 
-<div id="left-bar">
+<div id="full-bar">
+
+<div id="action"><div class="center"><%= render(:partial => 'challenges/dare', :locals => { :challenge => @challenge } )%></div></div>
 
   <div id="summary">
 
