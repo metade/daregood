@@ -125,6 +125,10 @@ padding:0;
 	padding: 0;
 }
 
+#media p {
+	margin: 1em;
+}
+
 #pledge {
 	margin: 0;
 	padding: 0;
