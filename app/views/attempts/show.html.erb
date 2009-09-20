@@ -7,7 +7,7 @@
 
 <div id="dare">
   <span class="title"><h1><%=h @attempt.challenge.name %></h1></span>
-  <span class="action"><a href="">Dare a friend to do this</a></span>
+  <span class="action"><a href="">Dare a friend to do this too</a></span>
 </div>
 
 <div id="right-bar">
@@ -17,7 +17,7 @@
     <p><%= link_to 'Make a pledge', new_resource_pledge_path %></p>
     <p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
     
-    <p>Clicking "Pledge" will take you to PayPal to pre-authorise the payment.  You will only be charged if the dare is completed.</p>
+    <p>Clicking "Pledge" will take you to PayPal to pre-authorise the payment.  You will <span style="color: red; font-weight: bold">only be charged if the dare is completed</span>.</p>
     <form action="" method="POST">
     <table>
     <tr><td><input type="text" name="amount" maxlength="6" value="10.00" /></td><td>GBP</td></tr>
@@ -29,7 +29,7 @@
   <div id="prog">
     <h3>Progress</h3>
     <p>x of y</p>
-    <div class="bar-outer"><div class="bar-inner" style="height: <%= @attempt.progress %>"</div></div>
+    <div class="bar-outer"><div class="bar-inner" style="height: <%= 100-@attempt.progress %>%;"></div></div>
   </div>
   
 </div>
@@ -69,7 +69,7 @@
   </div>
   
   <div id="donations">
-    <h3>Donations</h3>
+    <h3>Pledges</h3>
     
     <div class="comments">
       <% @attempt.pledges.each do |pledge| %>
