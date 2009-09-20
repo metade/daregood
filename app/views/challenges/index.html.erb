@@ -15,56 +15,37 @@
 <table class="dares">
 
 	<colgroup>
-    	<col class="title" />
-    	<col class="attempts" />
-    	<col class="dare" />
-    </colgroup>
-    
-    <% @challenges.each do |challenge| %>
-    <tr>
-  		<td class="title">
-  		  <%= image_tag(challenge.user.gravatar_url, :height => 100, :width => 100) %> <%= challenge.user.name %> dares
-        
-  		  <%= link_to(challenge.name, challenge_path(challenge)) %>.</td>
-  		<td class="attempts">
-  		  <% if challenge.attempts.any? %>
-  		  Attempted by
-  		  <% challenge.attempts.map { |attempt| link_to(attempt.daree.name, challenge_attempt_path(challenge, attempt)) }.join(',') %>
-  		  <% end %>
-  		  
-  		</td>
-  		<td class="dare">
-  		  <%= render(:partial => 'dare', :locals => { :challenge => challenge } )%>
-  		</td>
-  	</tr>
-  	<% end %>
+	<col class="gravatar" />
+	<col class="title" />
+	<col class="attempts" />
+	<col class="dare" />
+	</colgroup>
+
+	<% @challenges.each do |challenge| %>
+	<tr>
+		<td class="gravatar">
+			<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) %>
+		</td>
+
+		<td class="title">
+			<%= challenge.user.name %> dares
+			<%= link_to(challenge.name, challenge_path(challenge)) %>.
+		</td>
+
+		<td class="attempts">
+			<% if challenge.attempts.any? %>
+			Attempted by
+			<% challenge.attempts.map { |attempt| link_to(attempt.daree.name, challenge_attempt_path(challenge, attempt)) }.join(',') %>
+			<% end %>
+		</td>
+		
+		<td class="dare">
+			<%= render(:partial => 'dare', :locals => { :challenge => challenge } )%>
+		</td>
+	</tr>
+	<% end %>
+
 </table>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>User</th>
-  </tr>
-
-<% @challenges.each do |challenge| %>
-  <tr>
-    <td><%=h challenge.name %></td>
-    <td><%=h challenge.description %></td>
-    <td><%=h challenge.status %></td>
-    <td><%=h challenge.user.login %></td>
-    <td><%= link_to 'Show', resource_path(challenge) %></td>
-    <% if @account %>
-    <td><%= link_to 'Edit', edit_resource_path(challenge) %></td>
-    <td><%= link_to 'Destroy', resource_path(challenge), :confirm => 'Are you sure?', :method => :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<% if @account %>
-<%= link_to 'New challenge', new_resource_path %>
-<% end %>
+<div class="bottom"></div>
+</div>

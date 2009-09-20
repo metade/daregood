@@ -55,15 +55,20 @@ table.dares .title {width:100%;}
 table.dares .media {width:30ex;}
 table.dares .prog {width:30ex;}
 
+table.dares .attempts {width:30ex;}
+table.dares .dare {width:40ex;}
+table.dares .gravatar {width:100px;}
+
 table.dares tr {
 	 height: 5em;
 }
 
 table.dares td {
-	padding: 0 1em 0 1em;
+	margin: 0 1em 0 1em;
 	border-top: 2px solid #7777ff;
 	vertical-align: middle;
 }
+
 
 
 #options {
