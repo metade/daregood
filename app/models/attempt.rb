@@ -7,6 +7,10 @@ class Attempt < ActiveRecord::Base
   has_many :pledges
   has_many :comments, :as => :owner
   
+  validates_presence_of :target_value, :on => :update
+  validates_presence_of :charity_id, :on => :update
+  validates_uniqueness_of :daree_id, :scope => :challenge_id, :message => "is already doing this dare"
+  
   def value_pledged
     pledges.sum :value # { |sum, p| sum + p.value }
   end
