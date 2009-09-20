@@ -4,7 +4,7 @@
 
 <div id="dare">
   <span class="title"><h1><%=h @attempt.challenge.name %></h1></span>
-  <span class="action"><a href="">Dare a friend to do this too</a></span>
+  <span class="action"><%= render(:partial => 'challenges/dare', :locals => { :challenge => @challenge } )%></span>
 </div>
 
 <div id="right-bar">
