@@ -1,3 +1,17 @@
-<h1><blink>TODO!</blink></h1>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'index' %>
+<% end %>
 
-<%= link_to("Back to attempt", resource_path) %>
+<div id="title">
+	<h1>Daregood PayPal Integration</h1>
+</div>
+
+<p></p>
+
+<div id="intro" class="allroundcorners">
+  <%= image_tag('https://www.paypal.com/en_US/i/logo/paypal_logo.gif') %>
+  <p>TODO!</p>
+  <p>Looks like we're going to need a biger weekend...</p>
+	<h2><%= link_to("Go back", resource_path) %></h2>
+</div>
+
