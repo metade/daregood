@@ -61,7 +61,7 @@ table.dares tr {
 
 table.dares td {
 	padding: 0 1em 0 1em;
-	border-top: 2px solid;
+	border-top: 2px solid #7777ff;
 	vertical-align: middle;
 }
 
@@ -108,7 +108,7 @@ table.dares {
 
 table.dares tr {
 	background: #ffffff;
-	border-top: #ffffff;
+	border-top: #7777ff;
 }
 
 #options .item {
