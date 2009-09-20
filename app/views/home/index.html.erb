@@ -1,1 +1,47 @@
-<h1>DareGood</h1>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'index' %>
+<% end %>
+
+<div id="title">
+	<h1>Daregood</h1>
+</div>
+
+<div id="intro" class="allroundcorners">
+	<span>This is some welcome text about Daregood...</span>
+</div>
+
+<div id="dares">
+<div class="top"></div>
+<table class="dares">
+
+	<colgroup>
+    	<col class="title" />
+    	<col class="media" />
+    	<col class="prog" />
+    </colgroup>
+    
+    <% @attempts.each do |attempt| %>
+    <tr>
+  		<td class="title"><%= attempt.daree.name %> will <%= attempt.challenge.name %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</td>
+  		<td class="media">[media]</td>
+  		<td class="prog"><%= number_to_currency(attempt.value_pledged, :unit => '£') %> / <%= number_to_currency(attempt.target_value, :unit => '£') %></td>
+  	</tr>
+  	<% end %>
+</table>
+
+<div class="bottom"></div>
+</div>
+
+<div id="options">
+	
+	<div class="item allroundcorners left">
+		<h3>Challenge</h3>
+		<p>Want to dare a friend to do something?  Click below to declare a new challenge.</p>
+	</div>
+	
+	<div class="item allroundcorners right">
+		<h3>Explore</h3>
+		<p>Find a challenge to [....].</p>
+	</div>
+	
+</div>

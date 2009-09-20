@@ -1,0 +1,222 @@
+@CHARSET "UTF-8";
+
+#dare {
+margin:0;
+padding:0;
+}
+
+#dare .title {
+	float: left;
+	margin: 1em;
+	padding: 0.5em 1em 0.5em 1em;
+	
+	font-size: 1.5em;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	background: #ffffff;
+	color: #000000;
+}
+
+#dare .action {
+	float:right;
+	margin: 1em;
+	padding: 0.5em 1em 0.5em 1em;
+	
+	font-size: 1.5em;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	background: #ffffff;
+}
+
+#right-bar {
+	clear: both;
+	float: right;
+	padding: 0;
+	margin: 0;
+}
+
+#left-bar {
+	clear: left;
+	padding: 0;
+	margin: 0;
+	margin-right: 18em;
+}
+
+#summary {
+	margin: 1em 1em 1em 1em;
+	padding: 0.5em 1em 0.5em 1em;
+	background: #ffffff;
+	
+	min-height: 10em;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#summary .desc {
+	margin: 0em;
+	padding: 0.5em 1em 0.5em 1em;
+}
+
+#summary .pics {
+	float: right;
+}
+
+#summary .pic {
+	float: left;
+	margin: 1em;
+}
+
+#summary .pic p {
+	text-align: center;
+}
+
+#media {
+	margin: 1em;
+	padding: 0;
+	min-height: 10em;
+	background: #ffffff;
+	
+	overflow: auto;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#media ul {
+	margin: 1em;
+}
+
+#media ul li {
+	float: left;
+	list-style-type:none;
+	background: #ff00ff;
+	width: 100px;
+	height: 100px;
+	margin: 0 1em 1em 0;
+	padding: 0;
+}
+
+#pledge {
+	margin: 0;
+	padding: 0;
+	width: 17em;
+	
+	overflow: auto;
+	
+	background: #ffffff;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#pledge form {
+	margin: 1em;
+}
+
+#pledge table tr td {
+	padding: 0.1em 0.3em 0.1em 0.3em;
+}
+
+#pledge input {
+	text-align: center;
+	width: 100%;
+}
+
+#pledge p {
+	margin: 1em;
+	line-height: 1.3em;
+}
+
+#prog {
+	margin: 0 1em 1em 0em;
+	padding: 0;
+	min-height: 25em;
+	width: 17em;
+	
+	background: #ffffff;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#prog p {
+	margin: 1em;
+	text-align: center;
+}
+
+#prog .bar-outer {
+	margin: 1em;
+	width: 3em;
+	margin-left: 7em;
+	height: 20em;
+	background: #00ff00;
+}
+
+#prog .bar-inner {
+	margin: 0;
+	width: 3em;
+	background: #ff0000;
+}
+
+#donations {
+	margin: 1em;
+	padding: 0;
+	min-height: 10em;
+	min-height: 10em;
+	
+	overflow: auto;
+	
+	background: #ffffff;
+	
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#donations .comment {
+	min-height: 100px; /* based on the height of the avatar image. */
+	margin: 1em;
+	background: #cccccc;
+	padding: 1em;
+}
+
+#donations .comment img {
+	float: left;
+}
+
+#donations .comment .name {
+	font-weight:bold;
+	padding: 0.5em;
+	margin: 0;
+}
+
+#donations .comment .money {
+	font-weight:bold;
+	padding: 0.5em;
+	margin: 0;
+	border: 1px solid #00ff00;
+	background: #99ff99;
+}
+
+#donations .comment .comment {
+	padding: 0.5em;
+	margin: 0;
+}
