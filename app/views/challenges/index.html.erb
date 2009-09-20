@@ -35,7 +35,7 @@
 		<td class="attempts">
 			<% if challenge.attempts.any? %>
 			Attempted by
-			<% challenge.attempts.map { |attempt| link_to(attempt.daree.name, challenge_attempt_path(challenge, attempt)) }.join(',') %>
+			<%= challenge.attempts.map { |attempt| link_to(attempt.daree.name, challenge_attempt_path(challenge, attempt)) }.join(', ') %>
 			<% end %>
 		</td>
 		
