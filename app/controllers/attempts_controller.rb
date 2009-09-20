@@ -10,7 +10,7 @@ class AttemptsController < ApplicationController
       if resource.save
         format.html do
           flash[:notice] = "#{resource_name.humanize} was successfully created."
-          redirect_to edit_resource_url
+          redirect_to edit_challenge_attempt_path(resource.challenge, resource)
         end
         format.js
         format.xml  { render :xml => resource, :status => :created, :location => resource_url }

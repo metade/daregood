@@ -17,21 +17,7 @@
 </p>
 
 <p>
-<% if logged_in? %>
-<% form_for @challenge.attempts.new, :url => account_attempts_path do |f| %> 
-<%= f.hidden_field :challenge_id %>
-<%= f.hidden_field :daree_id, :value => current_user.id %>
-<%= f.submit('Attempt this challenge') %>
-<% end %>
-or dare
-<% form_for @challenge.attempts.new, :url => account_attempts_path do |f| %>
-<%= f.hidden_field :challenge_id %>
-<%= f.hidden_field :darer_id, :value => current_user.id %>
-<%= collection_select(:attempt, :daree_id, User.all, :id, :name, {:prompt => true}) %>
-<%= f.submit('to attempt this challenge') %>
-<% end %>
-<% end %>
-</p>
+<%= render(:partial => 'dare', :locals => { :challenge => @challenge } )%>
 
 <%= render(:partial => 'comments/comments', :locals => { :comments => @challenge.comments}) %>
 

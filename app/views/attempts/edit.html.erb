@@ -1,29 +1,32 @@
-<h1>Editing attempt for <% @attempt.challenge.name %></h1>
-
-<% form_for_resource do |f| %>
-  <%= f.error_messages %>
-  
-  <p>
-    <%= f.label :target_value, 'This attempt will raise' %> £<%= f.text_field :target_value %>
-    towards the <%= f.label :chartity_id, 'charity' %><%= collection_select(:attempt, :charity_id, Charity.all, :id, :name, {:prompt => true}) %>.
-  </p>
-  
-  <p>
-    <%= f.label :challenge_id %><br />
-    <%= f.text_field :challenge_id %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'dare' %>
 <% end %>
 
-<%= link_to 'Show', @attempt %> |
-<%= link_to 'Back', attempts_path %>
+<div id="dare">
+  <span class="title"><h1><%=h @attempt.challenge.name %></h1></span>
+</div>
+
+<div id="left-bar">
+  <% form_for(:attempt, @attempt, :url => account_attempt_path(@attempt), :html => { :method => :put }) do |f| %>
+    <%= f.error_messages %>
+
+  <div id="summary"> 
+    
+    <p>
+      <%= f.label :target_value, 'This attempt will raise' %> £<%= f.text_field :target_value, :size => 5 %>
+      towards the <%= f.label :chartity_id, 'charity' %><%= collection_select(:attempt, :charity_id, Charity.all, :id, :name, {:prompt => true}) %>.
+    </p>
+    
+    <%= f.hidden_field :darer_id %>
+    <p>
+      <%= f.label :daree_id, "You're daring:" %>
+      <%= collection_select(:attempt, :daree_id, User.all, :id, :name, {:prompt => true}) %>
+    </p>
+    
+    <p>
+      <%= f.submit 'Submit' %>
+    </p>
+    
+  </div>
+  <% end %>
+</div>
