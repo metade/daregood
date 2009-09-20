@@ -4,6 +4,17 @@ body {
 	font-family:Arial,sans-serif;
 }
 
+#nav_bar {
+	background: #ffffff;
+	padding: 0.5em;
+	float: right;
+
+	-webkit-border-bottom-left-radius: 10px;
+	-khtml-border-radius-bottomleft: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	border-bottom-left-radius: 10px;
+}
+
 #title {
 	font-size: 2em;
 	top: 0em;
