@@ -1,5 +1,9 @@
 <h1>Listing attempts <%= "for #{enclosing_resource_name} " + content_tag(:em, link_to(enclosing_resource.name, enclosing_resource_path)) if enclosing_resource %></h1>
 
+<br/>
+<br/>
+<br/>
+<br/>
 <table>
   <tr>
     <th>Attempt</th>
@@ -10,7 +14,7 @@
 
 <% @attempts.each do |attempt| %>
   <tr>
-    <td><%= link_to attempt.id, resource_path(attempt) %></td>
+    <td><%= link_to "view attempt", resource_path(attempt) %></td>
     <td><%= link_to(attempt.challenge.name, challenge_path(attempt.challenge)) %></td>
     <td><%=h attempt.status %></td>
     <td><%= link_to(attempt.user.login, short_user_path(attempt.user)) %></td>
