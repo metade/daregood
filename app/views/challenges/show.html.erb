@@ -28,7 +28,7 @@
       <div class="attempts">
         <% @challenge.attempts.each do |attempt| %>
         <div class="comment">
-          <span class="name"><%= link_to(attempt.darer.name, public_user_path(attempt.darer.name)) %> dared <%= link_to(attempt.daree.name, public_user_path(attempt.daree.name)) %> to <%= link_to(attempt.challenge.name, challenge_attempt_path(attempt.challenge, attempt)) %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</span>
+          <span class="name"><%= link_to(attempt.darer.name, public_user_path(attempt.darer)) %> dared <%= link_to(attempt.daree.name, public_user_path(attempt.daree)) %> to <%= link_to(attempt.challenge.name, challenge_attempt_path(attempt.challenge, attempt)) %> for <%= number_to_currency(attempt.target_value, :unit => '£') %>.</span>
           <span class="money"><%= number_to_currency(attempt.value_pledged, :unit => '£') %> / <%= number_to_currency(attempt.target_value, :unit => '£') %></span>
         </div>
         <% end %>
