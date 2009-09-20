@@ -9,17 +9,22 @@
 <div id="right-bar">
 
   <div id="pledge">
-    <h3>Support this</h3>
-    <p><%= link_to 'Make a pledge', new_resource_pledge_path %></p>
-    <p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
+    <h3>Support this Charity</h3>
+    <p><b><%= @attempt.charity.name if @attempt.charity %></b></p>
+    <p><i><%= @attempt.charity.mission if @attempt.charity %></i></p>
+    <p><%= image_tag(@attempt.charity.logo_url) if @attempt.charity %></p>
     
     <p>Clicking "Pledge" will take you to PayPal to pre-authorise the payment.  You will <span style="color: red; font-weight: bold">only be charged if the dare is completed</span>.</p>
-    <form action="" method="POST">
-    <table>
-    <tr><td><input type="text" name="amount" maxlength="6" value="10.00" /></td><td>GBP</td></tr>
-    <tr><td><input type="submit" name="pledge" value="Pledge" /></td></tr>
-    </table>
-    </form>
+
+    <% if logged_in? %>
+      <% form_for @attempt.pledges.new, :url => account_pledges_path do |f| %> 
+        <%= f.hidden_field :attempt_id %>
+        Amount: <%= f.text_field :value  %>
+        <%= f.submit('Make a Pledge') %>
+      <% end %>
+    <% end %>
+
+
   </div>
   
   <div id="prog">
