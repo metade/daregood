@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20090919222122) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "darer_id"
+    t.integer  "daree_id"
     t.integer  "charity_id"
     t.integer  "target_value"
   end

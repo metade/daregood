@@ -16,10 +16,20 @@
   <b>Challenge accepted by <%= link_to("#{@challenge.attempts.count} users", resource_attempts_path) %></b>
 </p>
 
-<% form_for @challenge.attempts.new, :url => account_attempts_path   do |f| %> 
+<p>
+<% form_for @challenge.attempts.new, :url => account_attempts_path do |f| %> 
 <%= f.hidden_field :challenge_id %>
+<%= f.hidden_field :daree_id, :value => current_user.id %>
 <%= f.submit('Attempt this challenge') %>
-<%end %>
+<% end %>
+or dare
+<% form_for @challenge.attempts.new, :url => account_attempts_path do |f| %>
+<%= f.hidden_field :challenge_id %>
+<%= f.hidden_field :darer_id, :value => current_user.id %>
+<%= collection_select(:attempt, :daree_id, User.all, :id, :name, {:prompt => true}) %>
+<%= f.submit('to attempt this challenge') %>
+<% end %>
+</p>
 
 <%= render(:partial => 'comments/comments', :locals => { :comments => @challenge.comments}) %>
 

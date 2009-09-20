@@ -7,9 +7,11 @@
 
 <p><%= link_to 'Make a pledge', new_resource_pledge_path %></p>
 
-<p>Attemptee: <%= image_tag @attempt.user.gravatar_url %> <%= @attempt.user.name %></p>
-<p>Dared by: <% if @attempt.darer %><%= image_tag @attempt.darer.gravatar_url %><%= @attempt.darer.name %><% end %></p>
-
+<% if @attempt.darer %>
+<p><%= image_tag @attempt.darer.gravatar_url %><%= @attempt.darer.name %> dared <%= image_tag @attempt.daree.gravatar_url %> <%= @attempt.daree.name %>.</p>
+<% else %>
+<p><%= image_tag @attempt.daree.gravatar_url %> <%= @attempt.daree.name %> dared themselves!</p>
+<% end %>
 <p>Charity: <%= @attempt.charity.name if @attempt.charity %></p>
 
 <div id="fsDemo" style="height:400px;width:600px;">
