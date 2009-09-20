@@ -13,5 +13,7 @@ or dare
 <%= collection_select(:attempt, :daree_id, User.all, :id, :name, {:prompt => true}) %>
 <%= f.submit('to attempt this dare') %>
 <% end %>
+<% else %>
+<%= link_to "Login", login_path %> or <%= link_to "Signup", signup_path %> <br/>to dare someone!
 <% end %>
 </p>
