@@ -10,7 +10,7 @@ class PledgesController < ApplicationController
       if resource.save
         format.html do
           flash[:notice] = "#{resource_name.humanize} was successfully created."
-          redirect_to challenge_attempt_url(resource.attempt.challenge, resource.attempt)
+          redirect_to paypal_challenge_attempt_url(resource.attempt.challenge, resource.attempt)
         end
         format.js
         format.xml  { render :xml => resource, :status => :created, :location => resource_url }

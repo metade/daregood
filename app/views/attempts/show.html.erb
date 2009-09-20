@@ -29,7 +29,7 @@
   
   <div id="prog">
     <h3>Progress</h3>
-    <p>x of y</p>
+    <p><%= number_to_currency(@attempt.value_pledged, :unit => '£') %> of <%= number_to_currency(@attempt.target_value, :unit => '£') %> </p>
     <div class="bar-outer"><div class="bar-inner" style="height: <%= 100-@attempt.progress %>%;"></div></div>
   </div>
   

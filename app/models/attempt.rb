@@ -12,10 +12,10 @@ class Attempt < ActiveRecord::Base
   validates_uniqueness_of :daree_id, :scope => :challenge_id, :message => "is already doing this dare"
   
   def value_pledged
-    pledges.sum :value # { |sum, p| sum + p.value }
+    pledges.sum :value
   end
   
   def progress
-    target_value ? (value_pledged / target_value) * 100 : 0
+    target_value.nil? ? 0 : (value_pledged / target_value.to_f) * 100
   end
 end
