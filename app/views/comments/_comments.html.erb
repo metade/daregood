@@ -1,5 +1,23 @@
-<h2>Comments</h2>
 <div id="comments">
-<%= render(comments) %>
+  <h3>Comments</h3>
+  
+  <div class="comments">
+    <div id="comments_container">
+    <%= render resource.comments %>
+    </div>
+    
+    <h4>New comment</h4>
+    <% remote_form_for resource.comments.new, :url => account_comments_path do |f| %>
+      <%= f.error_messages %>
+      <%= f.hidden_field :owner_id %>
+      <%= f.hidden_field :owner_type %>
+      <p>
+        <%= f.label :text %><br />
+        <%= f.text_field :text %>
+      </p>
+      <p>
+      <%= f.submit "Add Your Comment" %>
+      </p>
+    <% end %>
+  </div>
 </div>
-<%= link_to('New comment', resources_name == "comments" ? new_resource_path : new_resource_comment_path) %>
