@@ -1,0 +1,27 @@
+<div id="title">
+	<h1>DareGood Users</h1>
+</div>
+
+<table class="dares">
+
+	<colgroup>
+	<col/>
+	<col class="gravatar" />
+	<col class="title" />
+	<col class="dare" />
+	<col class="attempts" />
+	</colgroup>
+
+	<% @public_users.each do |user| %>
+	<tr>
+    <td class="gravatar">
+      <%= image_tag(user.gravatar_url, :height => 80, :width => 80)  %>
+    </td>
+		<td class="title">
+      <%= link_to user.login, short_user_path(user) %> 
+    </td>
+
+	</tr>
+<%end%>
+</table>
+	
