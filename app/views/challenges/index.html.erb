@@ -29,16 +29,14 @@
 					<td>
 						<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) unless challenge.user.nil? %>
 					</td>
-					<td>dared</td>
-					<td>
-						<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) %>
-					</td>
+          <td>
+			      <%= challenge.user.name %> dares:
+          </td>
 				</tr>
 			</table>
 		</td>
 
 		<td class="title">
-			<%= challenge.user.name %>'s dare:
 			<%= link_to(challenge.name, challenge_path(challenge)) %>.
 		</td>
 
