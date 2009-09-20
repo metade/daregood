@@ -15,7 +15,7 @@
 <table class="dares">
 
 	<colgroup>
-	<col class="gravatar" />
+	<col class="gravatars" />
 	<col class="title" />
 	<col class="attempts" />
 	<col class="dare" />
@@ -23,8 +23,18 @@
 
 	<% @challenges.each do |challenge| %>
 	<tr>
-		<td class="gravatar">
-			<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) %>
+		<td class="gravatars">
+			<table class="adareb">
+				<tr>
+					<td>
+						<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) unless challenge.user.nil? %>
+					</td>
+					<td>dared</td>
+					<td>
+						<%= image_tag(challenge.user.gravatar_url, :height => 80, :width => 80) %>
+					</td>
+				</tr>
+			</table>
 		</td>
 
 		<td class="title">

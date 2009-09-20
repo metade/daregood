@@ -6,15 +6,15 @@
   <span class="title"><h1><%=h @attempt.challenge.name %></h1></span>
 </div>
 
-<div id="left-bar">
+<div id="full-bar">
   <% form_for(:attempt, @attempt, :url => account_attempt_path(@attempt), :html => { :method => :put }) do |f| %>
     <%= f.error_messages %>
 
   <div id="summary"> 
-    
+
     <p>
       <%= f.label :target_value, 'This attempt will raise' %> £<%= f.text_field :target_value, :size => 5 %>
-      towards the <%= f.label :chartity_id, 'charity' %><%= collection_select(:attempt, :charity_id, Charity.all, :id, :name, {:prompt => true}) %>.
+      towards the <%= f.label :chartity_id, 'charity' %> <%= collection_select(:attempt, :charity_id, Charity.all, :id, :name, {:prompt => true}) %>.
     </p>
     
     <%= f.hidden_field :darer_id %>
